@@ -11,10 +11,11 @@
     <div>
         Parabéns, <asp:LoginName ID="LoginName1" runat="server" /> está no nosso site!</div>
         Clique aqui para <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="~/AcessoPublico/PaginaInicial.aspx" LogoutText="Sair" LoginText="Entrar" LogoutAction="Redirect" />
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Mochila.aspx">Mochila</asp:HyperLink>
-        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/AlterarSenha.aspx">Alterar Senha</asp:HyperLink>
-        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Perfil.aspx">Perfil</asp:HyperLink>
-        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Configuracoes.aspx">Configurações</asp:HyperLink>
+        <br /><asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Mochila/Mochila.aspx">Mochila</asp:HyperLink>
+        <br /><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Perfil/AlterarSenha.aspx">Alterar Senha</asp:HyperLink>
+        <br /><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Perfil/Perfil.aspx">Perfil</asp:HyperLink>
+        <br /><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Perfil/Configuracoes.aspx">Configurações</asp:HyperLink>
+        <br /><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/AnotacaoETarefa/AnotacaoETarefa.aspx">Anotações e Tarefas</asp:HyperLink>
     </form>
 </body>
 </html>

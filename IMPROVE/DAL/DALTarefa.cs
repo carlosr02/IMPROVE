@@ -110,7 +110,6 @@ namespace IMPROVE.DAL
             SqlCommand cmd = new SqlCommand("sp_inserirTarefa", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@descricao", obj.Descricao);
-            cmd.Parameters.AddWithValue("@cumprida", obj.Cumprida);
             cmd.Parameters.AddWithValue("@prioritaria", obj.Prioritaria);
             cmd.Parameters.AddWithValue("@usuario_id", obj.Usuario_id);
 
@@ -126,9 +125,9 @@ namespace IMPROVE.DAL
             SqlCommand cmd = new SqlCommand("sp_editarTarefa", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", obj.Id);
+            cmd.Parameters.AddWithValue("@descricao", obj.Descricao);
             cmd.Parameters.AddWithValue("@cumprida", obj.Cumprida);
             cmd.Parameters.AddWithValue("@prioritaria", obj.Prioritaria);
-            cmd.Parameters.AddWithValue("@usuario_id", obj.Usuario_id);
 
             cmd.ExecuteNonQuery();
         }

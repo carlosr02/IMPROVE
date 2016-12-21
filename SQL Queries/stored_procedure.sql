@@ -50,7 +50,6 @@ end
 
 create procedure sp_inserirTarefa
 	@descricao varchar(140),
-	@cumprida bit,
 	@prioritaria bit,
 	@usuario_id uniqueidentifier
 as

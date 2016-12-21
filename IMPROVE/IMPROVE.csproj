@@ -60,15 +60,17 @@
     <Content Include="AcessoPublico\Cadastrar.aspx" />
     <Content Include="AcessoPublico\PaginaInicial.aspx" />
     <Content Include="AcessoPublico\Entrar.aspx" />
-    <Content Include="Agenda.aspx" />
-    <Content Include="AlterarSenha.aspx" />
-    <Content Include="AnotacaoETarefa.aspx" />
-    <Content Include="Configuracoes.aspx" />
-    <Content Include="Mochila.aspx" />
+    <Content Include="Agenda\Agenda.aspx" />
+    <Content Include="Perfil\AlterarSenha.aspx" />
+    <Content Include="AnotacaoETarefa\AnotacaoETarefa.aspx" />
+    <Content Include="Perfil\Configuracoes.aspx" />
+    <Content Include="AnotacaoETarefa\InserirAnotacao.aspx" />
+    <Content Include="AnotacaoETarefa\InserirTarefa.aspx" />
+    <Content Include="Mochila\Mochila.aspx" />
     <Content Include="PaginaInicial.aspx" />
-    <Content Include="Perfil.aspx" />
-    <Content Include="Sala.aspx" />
-    <Content Include="Salas.aspx" />
+    <Content Include="Perfil\Perfil.aspx" />
+    <Content Include="Sala\Sala.aspx" />
+    <Content Include="Sala\Salas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,32 +95,32 @@
     <Compile Include="AcessoPublico\Entrar.aspx.designer.cs">
       <DependentUpon>Entrar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Agenda.aspx.cs">
+    <Compile Include="Agenda\Agenda.aspx.cs">
       <DependentUpon>Agenda.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Agenda.aspx.designer.cs">
+    <Compile Include="Agenda\Agenda.aspx.designer.cs">
       <DependentUpon>Agenda.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AlterarSenha.aspx.cs">
+    <Compile Include="Perfil\AlterarSenha.aspx.cs">
       <DependentUpon>AlterarSenha.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AlterarSenha.aspx.designer.cs">
+    <Compile Include="Perfil\AlterarSenha.aspx.designer.cs">
       <DependentUpon>AlterarSenha.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AnotacaoETarefa.aspx.cs">
+    <Compile Include="AnotacaoETarefa\AnotacaoETarefa.aspx.cs">
       <DependentUpon>AnotacaoETarefa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AnotacaoETarefa.aspx.designer.cs">
+    <Compile Include="AnotacaoETarefa\AnotacaoETarefa.aspx.designer.cs">
       <DependentUpon>AnotacaoETarefa.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Configuracoes.aspx.cs">
+    <Compile Include="Perfil\Configuracoes.aspx.cs">
       <DependentUpon>Configuracoes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Configuracoes.aspx.designer.cs">
+    <Compile Include="Perfil\Configuracoes.aspx.designer.cs">
       <DependentUpon>Configuracoes.aspx</DependentUpon>
     </Compile>
     <Compile Include="DAL\DALAnotacao.cs" />
@@ -129,11 +131,25 @@
     <Compile Include="DAL\DALTarefa.cs" />
     <Compile Include="DAL\DALUsuario.cs" />
     <Compile Include="DAL\DALUsuariosSala.cs" />
-    <Compile Include="Mochila.aspx.cs">
+    <Compile Include="AnotacaoETarefa\InserirAnotacao.aspx.cs">
+      <DependentUpon>InserirAnotacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnotacaoETarefa\InserirAnotacao.aspx.designer.cs">
+      <DependentUpon>InserirAnotacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AnotacaoETarefa\InserirTarefa.aspx.cs">
+      <DependentUpon>InserirTarefa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnotacaoETarefa\InserirTarefa.aspx.designer.cs">
+      <DependentUpon>InserirTarefa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mochila\Mochila.aspx.cs">
       <DependentUpon>Mochila.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Mochila.aspx.designer.cs">
+    <Compile Include="Mochila\Mochila.aspx.designer.cs">
       <DependentUpon>Mochila.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Anotacao.cs" />
@@ -151,26 +167,26 @@
     <Compile Include="PaginaInicial.aspx.designer.cs">
       <DependentUpon>PaginaInicial.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Perfil.aspx.cs">
+    <Compile Include="Perfil\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Perfil.aspx.designer.cs">
+    <Compile Include="Perfil\Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sala.aspx.cs">
+    <Compile Include="Sala\Sala.aspx.cs">
       <DependentUpon>Sala.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sala.aspx.designer.cs">
+    <Compile Include="Sala\Sala.aspx.designer.cs">
       <DependentUpon>Sala.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Salas.aspx.cs">
+    <Compile Include="Sala\Salas.aspx.cs">
       <DependentUpon>Salas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Salas.aspx.designer.cs">
+    <Compile Include="Sala\Salas.aspx.designer.cs">
       <DependentUpon>Salas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
