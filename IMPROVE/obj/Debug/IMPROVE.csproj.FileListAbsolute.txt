@@ -1,0 +1,5 @@
+c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\bin\IMPROVE.dll
+c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\bin\IMPROVE.pdb
+c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\obj\Debug\IMPROVE.csprojResolveAssemblyReference.cache
+c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\obj\Debug\IMPROVE.dll
+c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\obj\Debug\IMPROVE.pdb
