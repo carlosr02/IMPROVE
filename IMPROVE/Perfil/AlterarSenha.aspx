@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Alterar Senha</title>
+    <title>Alterar Senha | Improve</title>
 </head>
 <body>
     <form id="form1" runat="server">

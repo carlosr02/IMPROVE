@@ -31,7 +31,7 @@
                 </tr>
             </table>
             <br />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/PaginaInicial.aspx">Voltar para Página Inicial</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Perfil/Perfil.aspx">Voltar para o Perfil</asp:HyperLink>
         </div>
     </form>
 </body>

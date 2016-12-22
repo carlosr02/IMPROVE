@@ -229,11 +229,6 @@ create procedure sp_inserirEvento
 	@usuario_id uniqueidentifier
 as
 begin
-	if(dbo.validarEspacosVazios(@descricao) = 0)
-	begin
-		raiserror('Campo descrição vazio',16,1)
-		return
-	end
 	if(dbo.validarData(@diaEvento) = 2)
 	begin
 		raiserror('Dia menor que a data atual',16,1)
@@ -250,11 +245,6 @@ create procedure sp_editarEvento
 	@diaEvento date
 as
 begin
-	if(dbo.validarEspacosVazios(@descricao) = 0)
-	begin
-		raiserror('Campo descrição vazio',16,1)
-		return
-	end
 	if(dbo.validarData(@diaEvento) = 2)
 	begin
 		raiserror('Dia menor que a data atual',16,1)
