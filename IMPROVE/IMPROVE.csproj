@@ -61,6 +61,7 @@
     <Content Include="AcessoPublico\PaginaInicial.aspx" />
     <Content Include="AcessoPublico\Entrar.aspx" />
     <Content Include="Agenda\Agenda.aspx" />
+    <Content Include="Agenda\InserirEvento.aspx" />
     <Content Include="Perfil\AlterarSenha.aspx" />
     <Content Include="AnotacaoETarefa\AnotacaoETarefa.aspx" />
     <Content Include="Perfil\Configuracoes.aspx" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="Agenda\Agenda.aspx.designer.cs">
       <DependentUpon>Agenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agenda\InserirEvento.aspx.cs">
+      <DependentUpon>InserirEvento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agenda\InserirEvento.aspx.designer.cs">
+      <DependentUpon>InserirEvento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Perfil\AlterarSenha.aspx.cs">
       <DependentUpon>AlterarSenha.aspx</DependentUpon>

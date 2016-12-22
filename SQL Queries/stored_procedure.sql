@@ -39,6 +39,7 @@ create procedure sp_listarTarefas
 as
 begin
 	select * from Tarefa where usuario_id = @usuario_id
+	order by cumprida, prioritaria desc, horarioEnvio
 end
 
 create procedure sp_listarTarefa
@@ -93,6 +94,7 @@ create procedure sp_listarAnotacoes
 as
 begin
 	select * from Anotacao where usuario_id = @usuario_id
+	order by favorito desc, horarioEnvio desc
 end
 
 create procedure sp_listarAnotacao
@@ -155,6 +157,7 @@ create procedure sp_listarArquivos
 as
 begin
 	select * from Arquivo where usuario_id = @usuario_id
+	order by descricao
 end
 
 create procedure sp_inserirArquivo
@@ -207,6 +210,7 @@ create procedure sp_listarEventosDia
 as
 begin
 	select * from Evento where usuario_id = @usuario_id and diaEvento = @diaEvento
+	order by titulo asc
 end
 
 
@@ -215,6 +219,7 @@ create procedure sp_listarEventos
 as
 begin
 	select * from Evento where usuario_id = @usuario_id
+	order by diaEvento,titulo
 end
 
 create procedure sp_inserirEvento
