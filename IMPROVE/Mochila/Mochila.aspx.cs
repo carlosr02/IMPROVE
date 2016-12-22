@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace IMPROVE
 {
@@ -22,28 +23,19 @@ namespace IMPROVE
         {
             if (FileUploadArquivo.HasFile)
             {
-                string redirect;
-                string filename;
-                try
-                {
-                    string descricao = FileUploadArquivo.FileName;
-                    string endereco = "~/" + Session["userId"].ToString() + "/";
-                    int tamanhoArquivo = FileUploadArquivo.PostedFile.ContentLength;
-                    Guid usuario_id = new Guid(Session["userId"].ToString());
+                string extensao = Path.GetExtension(FileUploadArquivo.FileName);
+                string descricao = FileUploadArquivo.FileName.Replace(extensao, "");
+                string endereco = "~/" + Session["userId"].ToString() + "/";
+                int tamanhoArquivo = FileUploadArquivo.PostedFile.ContentLength;
+                Guid usuario_id = new Guid(Session["userId"].ToString());
 
-                    Arquivo = new Modelo.Arquivo(0, descricao, endereco, tamanhoArquivo, DateTime.Now, DateTime.Now, usuario_id);
-                    DALArquivo.Insert(Arquivo);
+                Arquivo = new Modelo.Arquivo(0, descricao, extensao, endereco, tamanhoArquivo, DateTime.Now, DateTime.Now, usuario_id);
+                DALArquivo.Insert(Arquivo);
 
-                    filename = Request.PhysicalApplicationPath + Session["userId"].ToString() + "\\" + FileUploadArquivo.FileName;
-                    FileUploadArquivo.SaveAs(filename);
+                string filename = Request.PhysicalApplicationPath + Session["userId"].ToString() + "\\" + FileUploadArquivo.FileName;
+                FileUploadArquivo.SaveAs(filename);
 
-                    //redirect = "~\\WebFormMensagem.aspx?msgTipo=ok&msg=Cronologia Enviada com Sucesso";
-                }
-                catch (Exception ex)
-                {
-                    //redirect = "~\\WebFormMensagem.aspx?msgTipo=erro&msg=Erro Enviando Cronologia";
-                }
-                Response.Redirect("Mochila.aspx"/*redirect*/);
+                Response.Redirect("Mochila.aspx");
             }
         }
 
@@ -56,8 +48,8 @@ namespace IMPROVE
 
                 Arquivo = DALArquivo.SelectById(codigo);
 
-                string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + Arquivo.Descricao;
-                System.IO.FileInfo file = new System.IO.FileInfo(path);
+                string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + Arquivo.Descricao + Arquivo.Extensao;
+                FileInfo file = new FileInfo(path);
                 if (file.Exists)
                 {
                     Response.Clear();
@@ -76,7 +68,7 @@ namespace IMPROVE
 
             Arquivo = DALArquivo.SelectById(codigo);
 
-            string path = Session["userId"].ToString() + "/" + Arquivo.Descricao;
+            string path = "~/" + Session["userId"].ToString() + "/" + Arquivo.Descricao + Arquivo.Extensao;
             Response.Redirect(path);
         }
 
@@ -87,12 +79,32 @@ namespace IMPROVE
 
             Arquivo = DALArquivo.SelectById(codigo);
 
-            string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + Arquivo.Descricao;
+            string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\" + Arquivo.Descricao + Arquivo.Extensao;
 
             DALArquivo.Delete(Arquivo);
-            System.IO.File.Delete(path);
+            File.Delete(path);
 
             Response.Redirect("Mochila.aspx");
+        }
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            int index = e.RowIndex;
+
+            int id = Convert.ToInt32(GridView1.DataKeys[index].Value.ToString());
+            string descricao = (GridView1.Rows[index].Cells[1].Controls[0] as TextBox).Text;
+
+            Arquivo = DALArquivo.SelectById(id);
+            string extensao = Arquivo.Extensao;
+            string sourceName = Arquivo.Descricao + extensao;
+
+            Arquivo.Descricao = descricao;
+            DALArquivo.Update(Arquivo);
+
+            string path = Request.PhysicalApplicationPath.ToString() + Session["userId"].ToString() + "\\";
+
+            File.Move(path + sourceName, path + descricao + extensao);
+            Response.Redirect("~/Mochila/Mochila.aspx");
         }
     }
 }

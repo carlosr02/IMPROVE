@@ -42,10 +42,11 @@ namespace IMPROVE.DAL
                         Convert.ToInt32(dr[0]),
                         dr[1] as string,
                         dr[2] as string,
-                        Convert.ToInt32(dr[3]),
-                        Convert.ToDateTime(dr[4]),
+                        dr[3] as string,
+                        Convert.ToInt32(dr[4]),
                         Convert.ToDateTime(dr[5]),
-                        new Guid(dr[6].ToString())
+                        Convert.ToDateTime(dr[6]),
+                        new Guid(dr[7].ToString())
                         );
                     aListArquivos.Add(aArquivo);
                 }
@@ -76,10 +77,11 @@ namespace IMPROVE.DAL
                 Convert.ToInt32(dr[0]),
                 dr[1] as string,
                 dr[2] as string,
-                Convert.ToInt32(dr[3]),
-                Convert.ToDateTime(dr[4]),
+                dr[3] as string,
+                Convert.ToInt32(dr[4]),
                 Convert.ToDateTime(dr[5]),
-                new Guid(dr[6].ToString())
+                Convert.ToDateTime(dr[6]),
+                new Guid(dr[7].ToString())
             );
 
             dr.Close();
@@ -110,6 +112,7 @@ namespace IMPROVE.DAL
             SqlCommand cmd = new SqlCommand("sp_inserirArquivo", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@descricao", obj.Descricao);
+            cmd.Parameters.AddWithValue("@extensao", obj.Extensao);
             cmd.Parameters.AddWithValue("@endereco", obj.Endereco);
             cmd.Parameters.AddWithValue("@tamanhoArquivo", obj.TamanhoArquivo);
             cmd.Parameters.AddWithValue("@usuario_id", obj.Usuario_id);

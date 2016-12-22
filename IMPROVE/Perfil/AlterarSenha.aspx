@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:ChangePassword ID="ChangePassword1" runat="server" CancelDestinationPageUrl="~/PaginaInicial.aspx" ContinueDestinationPageUrl="~/PaginaInicial.aspx" EditProfileUrl="~/Configuracoes.aspx" SuccessPageUrl="~/PaginaInicial.aspx"></asp:ChangePassword>
+        <asp:ChangePassword ID="ChangePassword1" runat="server" CancelDestinationPageUrl="~/Perfil/Perfil.aspx" ContinueDestinationPageUrl="~/Perfil/Perfil.aspx" EditProfileUrl="~/Perfil/Configuracoes.aspx" SuccessPageUrl="~/Perfil/Perfil.aspx"></asp:ChangePassword>
     </div>
     </form>
 </body>

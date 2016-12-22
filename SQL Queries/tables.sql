@@ -36,7 +36,8 @@ create table Anotacao(
 
 create table Arquivo(
 	id int identity(1,1) not null,
-	descricao varchar(255) not null,
+	descricao varchar(250) not null,
+	extensao varchar(5) not null,
 	endereco varchar(500) not null,
 	tamanhoArquivo int not null,
 	horarioEnvio datetime default getdate(),

@@ -20,6 +20,13 @@ namespace IMPROVE.Modelo
             get { return descricao; }
             set { descricao = value; }
         }
+        private string extensao;
+
+        public string Extensao
+        {
+            get { return extensao; }
+            set { extensao = value; }
+        }
         private string endereco;
 
         public string Endereco
@@ -54,10 +61,11 @@ namespace IMPROVE.Modelo
             get { return usuario_id; }
         }
 
-        public Arquivo(int id, string descricao, string endereco, int tamanhoArquivo, DateTime horarioEnvio, DateTime horarioModificao, Guid usuario_id)
+        public Arquivo(int id, string descricao, string extensao, string endereco, int tamanhoArquivo, DateTime horarioEnvio, DateTime horarioModificao, Guid usuario_id)
         {
             this.id = id;
             this.descricao = descricao;
+            this.extensao = extensao;
             this.endereco = endereco;
             this.tamanhoArquivo = tamanhoArquivo;
             this.horarioEnvio = horarioEnvio;

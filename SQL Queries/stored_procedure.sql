@@ -11,7 +11,7 @@ create procedure sp_editarUsuario
 	@email varchar(256),
 	@senha varchar(128),
 	@nome varchar(250),
-	@dataDeNascimento date,
+	@dataDeNascimento date = null,
 	@enderecoFoto varchar(500) 
 as
 begin
@@ -158,14 +158,15 @@ begin
 end
 
 create procedure sp_inserirArquivo
-	@descricao varchar(255),
+	@descricao varchar(250),
+	@extensao varchar(5),
 	@endereco varchar(500),
 	@tamanhoArquivo int,
 	@usuario_id uniqueidentifier
 as
 begin
-	insert into Arquivo(descricao,endereco,tamanhoArquivo,usuario_id) 
-		values(@descricao,@endereco,@tamanhoArquivo,@usuario_id)
+	insert into Arquivo(descricao,extensao,endereco,tamanhoArquivo,usuario_id) 
+		values(@descricao,@extensao,@endereco,@tamanhoArquivo,@usuario_id)
 end
 
 create procedure sp_editarArquivo

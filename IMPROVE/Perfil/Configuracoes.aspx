@@ -8,14 +8,31 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:Image ID="ImagePerfil" runat="server" />
-        <asp:FileUpload ID="FileUpload1" runat="server" />
-        <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
-        <asp:TextBox ID="TextBoxNome" runat="server"></asp:TextBox>
-        <asp:TextBox ID="TextBoxDataNascimento" runat="server" type="date"></asp:TextBox>
-        <asp:Button ID="ButtonEditar" runat="server" Text="Button" OnClick="ButtonEditar_Click" />
-    </div>
+        <div>
+            <table>
+                <tr>
+                    <td><asp:Image ID="ImagePerfil" runat="server" Height="50px" /></td>
+                    <td><asp:FileUpload ID="FileUpload1" runat="server" /></td>
+                </tr>
+                <tr>
+                    <td>Nome Completo: </td>
+                    <td><asp:TextBox ID="TextBoxNome" runat="server"></asp:TextBox></td>
+                </tr>
+                <tr>
+                    <td>Data de Nascimento: </td>
+                    <td><asp:TextBox ID="TextBoxDataNascimento" runat="server" type="date"></asp:TextBox></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><asp:Button ID="ButtonEditar" runat="server" Text="Editar" OnClick="ButtonEditar_Click" /></td>
+                </tr>
+            </table>
+            <br />
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/PaginaInicial.aspx">Voltar para Página Inicial</asp:HyperLink>
+        </div>
     </form>
 </body>
 </html>
