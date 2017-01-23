@@ -1,4 +1,4 @@
--------------------------------------Nome banco de dados: 2016TiiGrupo3-----------------------------------------
+-----------------------------------------------------Nome banco de dados: 2016TiiGrupo3--------------------------------------------------------
 create table Usuario(
 	id uniqueidentifier not null,
 	usuario nvarchar(256) not null,
@@ -13,7 +13,7 @@ create table Usuario(
 create table Tarefa(
 	id int identity(1,1) not null,
 	descricao varchar(140) not null,
-	cumprida bit not null,
+	cumprida bit not null default 0,
 	prioritaria bit not null,
 	horarioEnvio datetime default getdate(),
 	horarioModificao datetime default getdate(),
@@ -96,11 +96,13 @@ create table Disciplina(
 	id int identity(1,1) not null,
 	descricao varchar(100) not null,
 	media float,
+	periodo_id int not null,
 	boletim_id int not null,
 	primary key(id),
+	foreign key(periodo_id) references Periodo(id),
 	foreign key(boletim_id) references Boletim(id)
 )
-
+	
 create table Periodo(
 	id int identity(1,1) not null,
 	descricao varchar(100) not null,
@@ -110,8 +112,8 @@ create table Periodo(
 create table Nota(
 	id int identity(1,1) not null,
 	valor float not null,
-	peso float not null,
+	peso int not null,
 	disciplina_id int not null,
-	periodo_id int not null,
-	primary key(id,disciplina_id,periodo_id)
+	primary key(id),
+	foreign key(disciplina_id) references Disciplina(id)
 )

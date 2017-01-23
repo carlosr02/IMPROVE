@@ -33,6 +33,28 @@ begin
 	return @validacao
 end
 
+--Função para validar nota
+create function validarNota (@valor float)
+returns bit
+as
+begin
+	declare @validacao bit
+	if(@valor < 0) set @validacao = 0
+	else set @validacao = 1
+	return @validacao
+end
+
+--Função para validar peso
+create function validarPeso (@peso int)
+returns bit
+as
+begin
+	declare @validacao bit
+	if(@peso <= 0) set @validacao = 0
+	else set @validacao = 1
+	return @validacao
+end
+
 create function validarSenha (@senha varchar(128))
 returns bit
 as

@@ -60,8 +60,8 @@ begin
 		raiserror('Campo descrição vazio',16,1)
 		return
 	end
-	insert into Tarefa(descricao,cumprida,prioritaria,usuario_id) 
-		values(@descricao,0,@prioritaria,@usuario_id)
+	insert into Tarefa(descricao,prioritaria,usuario_id) 
+		values(@descricao,@prioritaria,@usuario_id)
 end
 
 create procedure sp_editarTarefa
@@ -261,26 +261,24 @@ as
 begin
 	delete from Evento where id = @id
 end
------------------------------------------------******BOLTEIM******---------------------------------------------------
+-----------------------------------------------BOLETIM---------------------------------------------------
 create procedure sp_listarBoletim
+	@id int
 as
 begin
-	select * from Boletim
+	select * from Boletim where id = @id
+end
+
+create procedure sp_listarBoletins
+	@usuario_id uniqueidentifier
+as
+begin
+	select * from Boletim where usuario_id = @usuario_id
 end
 
 create procedure sp_inserirBoletim
-	@id int,
 	@descricao varchar(100),
-	@usuario_id int
-as
-begin
-	insert into Boletim(descricao,usuario_id) 
-		values(@descricao,@usuario_id)
-end
-create procedure sp_editarBoletim
-	@id int,
-	@descricao varchar(100),
-	@usuario_id int
+	@usuario_id uniqueidentifier
 as
 begin
 	if(dbo.validarEspacosVazios(@descricao) = 0)
@@ -292,37 +290,45 @@ begin
 		values(@descricao,@usuario_id)
 end
 
+create procedure sp_editarBoletim
+	@id int,
+	@descricao varchar(100)
+as
+begin
+	if(dbo.validarEspacosVazios(@descricao) = 0)
+	begin
+		raiserror('Campo descrição vazio',16,1)
+		return
+	end
+	update Boletim set descricao = @descricao 
+	where id = @id
+end
+
 create procedure sp_deletarBoletim
-	@id uniqueidentifier
+	@id int
 as
 begin
 	delete from Boletim where id = @id
 end
----------------------------------------------------***DISCIPLINA***---------------------------------------------
+---------------------------------------------------DISCIPLINA---------------------------------------------
 create procedure sp_listarDisciplina
+	@id int
 as
 begin
-	select * from Disciplina
+	select * from Disciplina where id = @id
 end
 
-create procedure sp_inserirDisciplina
-	@id int,
-	@descricao varchar(100),
-	@duracao varchar(100),
-	@media float,
-	@usuario_id int,
+create procedure sp_listarDisciplinas
 	@boletim_id int
 as
 begin
-	insert into Disciplina(descricao,duracao, media,usuario_id, boletim_id) 
-		values(@descricao,@duracao, @media, @usuario_id, @boletim_id)
+	select * from Disciplina where boletim_id = @boletim_id
 end
-create procedure sp_editarDisciplina
-	@id int,
+
+create procedure sp_inserirDisciplina
 	@descricao varchar(100),
-	@duracao varchar (100),
 	@media float,
-	@usuario_id int,
+	@periodo_id int,
 	@boletim_id int
 as
 begin
@@ -331,55 +337,80 @@ begin
 		raiserror('Campo descrição vazio',16,1)
 		return
 	end
-	insert into Disciplina(descricao, duracao, media, usuario_id, boletim_id) 
-		values(@descricao, @duracao, @media, @usuario_id, @boletim_id)
+	insert into Disciplina(descricao, media, periodo_id, boletim_id) 
+		values(@descricao, @media, @periodo_id, @boletim_id)
+end
+
+create procedure sp_editarDisciplina
+	@id int,
+	@descricao varchar(100),
+	@media float
+as
+begin
+	if(dbo.validarEspacosVazios(@descricao) = 0)
+	begin
+		raiserror('Campo descrição vazio',16,1)
+		return
+	end
+	update Disciplina set descricao = @descricao, media = @media
+	where id = @id
 end
 
 create procedure sp_deletarDisciplina
-	@id uniqueidentifier
+	@id int
 as
 begin
 	delete from Disciplina where id = @id
 end
-----------------------------------------------***NOTA***-------------------------------------------------
+----------------------------------------------NOTA-------------------------------------------------
 create procedure sp_listarNota
+	@id int
 as
 begin
-	select * from Nota
+	select * from Nota where id = @id
 end
 
 create procedure sp_inserirNota
-	@id int,
 	@valor float,
 	@peso int,
-	@usuario_id int,
-	@disciplina_id int,
-	@periodo_id int
+	@disciplina_id int
 as
 begin
-	insert into Nota(valor,peso,usuario_id,disciplina_id, periodo_id) 
-		values(@valor,@peso, @usuario_id, @disciplina_id, @periodo_id)
+	if(dbo.validarNota(@valor) = 0)
+	begin
+		raiserror('A nota deve ser maior ou igual a zero',16,1)
+		return
+	end
+	if(dbo.validarPeso(@peso) = 0)
+	begin
+		raiserror('O peso deve ser positivo',16,1)
+		return
+	end
+	insert into Nota(valor,peso,disciplina_id) 
+		values(@valor,@peso, @disciplina_id)
 end
 create procedure sp_editarNota
 	@id int,
 	@valor float,
-	@peso int,
-	@usuario_id int,
-	@disciplina_id int,
-	@periodo_id int
+	@peso int
 as
 begin
-	if(dbo.validarEspacosVazios(@descricao) = 0)
+	if(dbo.validarNota(@valor) = 0)
 	begin
-		raiserror('Campo descrição vazio',16,1)
+		raiserror('A nota deve ser maior ou igual a zero',16,1)
 		return
 	end
-	insert into Nota(valor, peso, usuario_id, disciplina_id, periodo_id) 
-		values(@valor, @peso, @usuario_id, @disciplina_id, @periodo_id)
+	if(dbo.validarPeso(@peso) = 0)
+	begin
+		raiserror('O peso deve ser positivo',16,1)
+		return
+	end
+	update Nota set valor = @valor, peso = @peso
+	where id = @id
 end
 
 create procedure sp_deletarNota
-	@id uniqueidentifier
+	@id int
 as
 begin
 	delete from Nota where id = @id
