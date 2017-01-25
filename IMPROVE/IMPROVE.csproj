@@ -110,6 +110,13 @@
     <Compile Include="Agenda\InserirEvento.aspx.designer.cs">
       <DependentUpon>InserirEvento.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DALBoletim.cs" />
+    <Compile Include="DAL\DALDisciplina.cs" />
+    <Compile Include="DAL\DALNota.cs" />
+    <Compile Include="Modelo\Boletim.cs" />
+    <Compile Include="Modelo\Disciplina.cs" />
+    <Compile Include="Modelo\Nota.cs" />
+    <Compile Include="Modelo\Periodo.cs" />
     <Compile Include="Perfil\AlterarSenha.aspx.cs">
       <DependentUpon>AlterarSenha.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

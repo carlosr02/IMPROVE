@@ -9,28 +9,28 @@ using System.Web;
 
 namespace IMPROVE.DAL
 {
-    public class DALBoletim
+    public class DALNota
     {
         private string connectionString = "";
 
-        public DALBoletim()
+        public DALNota()
         {
             connectionString = ConfigurationManager.ConnectionStrings
                 ["2016TiiGrupo3ConnectionString"].ConnectionString;
         }
 
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<Modelo.Boletim> SelectAll(Guid usuario_id)
+        /*[DataObjectMethod(DataObjectMethodType.Select)]
+        public List<Modelo.Nota> SelectAll(Guid boletim_id)
         {
-            Modelo.Boletim aBoletim;
-            List<Modelo.Boletim> aListBoletins = new List<Modelo.Boletim>();
+            Modelo.Nota aNota;
+            List<Modelo.Nota> aListNotas = new List<Modelo.Nota>();
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_listarBoletins", conn);
+            SqlCommand cmd = new SqlCommand("sp_listarNotas", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@usuario_id", usuario_id);
+            cmd.Parameters.AddWithValue("@boletim_id", boletim_id);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
@@ -38,55 +38,59 @@ namespace IMPROVE.DAL
             {
                 while (dr.Read())
                 {
-                    aBoletim = new Modelo.Boletim(
+                    aNota = new Modelo.Nota(
                         Convert.ToInt32(dr[0]),
                         dr[1] as string,
-                        new Guid(dr[2].ToString())
+                        Convert.ToDouble(dr[2]),
+                        Convert.ToInt32(dr[3]),
+                        Convert.ToInt32(dr[4])
                         );
-                    aListBoletins.Add(aBoletim);
+                    aListNotas.Add(aNota);
                 }
             }
 
             dr.Close();
             conn.Close();
 
-            return aListBoletins;
-        }
+            return aListNotas;
+        }*/
 
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public Modelo.Boletim SelectById(int id)
+        public Modelo.Nota SelectById(int id)
         {
-            Modelo.Boletim aBoletim;
+            Modelo.Nota aNota;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_listarBoletim", conn);
+            SqlCommand cmd = new SqlCommand("sp_listarNota", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader dr = cmd.ExecuteReader();
 
             dr.Read();
-            aBoletim = new Modelo.Boletim(
+            aNota = new Modelo.Nota(
                 Convert.ToInt32(dr[0]),
                 dr[1] as string,
-                new Guid(dr[2].ToString())
+                Convert.ToDouble(dr[2]),
+                Convert.ToInt32(dr[3]),
+                Convert.ToInt32(dr[4])
             );
 
             dr.Close();
             conn.Close();
 
-            return aBoletim;
+            return aNota;
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
-        public void Delete(Modelo.Boletim obj)
+        public void Delete(Modelo.Nota obj)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_deletarBoletim", conn);
+            SqlCommand cmd = new SqlCommand("sp_deletarNota", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", obj.Id);
 
@@ -94,29 +98,32 @@ namespace IMPROVE.DAL
         }
 
         [DataObjectMethod(DataObjectMethodType.Insert)]
-        public void Insert(Modelo.Boletim obj)
+        public void Insert(Modelo.Nota obj)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_inserirBoletim", conn);
+            SqlCommand cmd = new SqlCommand("sp_inserirNota", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@descricao", obj.Descricao);
-            cmd.Parameters.AddWithValue("@usuario_id", obj.Usuario_id);
+            cmd.Parameters.AddWithValue("@extensao", obj.Media);
+            cmd.Parameters.AddWithValue("@endereco", obj.Periodo_id);
+            cmd.Parameters.AddWithValue("@tamanhoNota", obj.Boletim_id);
 
             cmd.ExecuteNonQuery();
         }
 
         [DataObjectMethod(DataObjectMethodType.Update)]
-        public void Update(Modelo.Boletim obj)
+        public void Update(Modelo.Nota obj)
         {
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("sp_editarBoletim", conn);
+            SqlCommand cmd = new SqlCommand("sp_editarNota", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", obj.Id);
             cmd.Parameters.AddWithValue("@descricao", obj.Descricao);
+            cmd.Parameters.AddWithValue("@media", obj.Media);
 
             cmd.ExecuteNonQuery();
         }

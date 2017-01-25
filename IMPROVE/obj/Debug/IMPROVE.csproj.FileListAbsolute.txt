@@ -3,3 +3,8 @@ c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\bin
 c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\obj\Debug\IMPROVE.csprojResolveAssemblyReference.cache
 c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\obj\Debug\IMPROVE.dll
 c:\users\carlos romero\documents\visual studio 2012\Projects\IMPROVE\IMPROVE\obj\Debug\IMPROVE.pdb
+C:\Users\20141011110255\Documents\GitHub\IMPROVE\IMPROVE\bin\IMPROVE.dll
+C:\Users\20141011110255\Documents\GitHub\IMPROVE\IMPROVE\bin\IMPROVE.pdb
+C:\Users\20141011110255\Documents\GitHub\IMPROVE\IMPROVE\obj\Debug\IMPROVE.csprojResolveAssemblyReference.cache
+C:\Users\20141011110255\Documents\GitHub\IMPROVE\IMPROVE\obj\Debug\IMPROVE.dll
+C:\Users\20141011110255\Documents\GitHub\IMPROVE\IMPROVE\obj\Debug\IMPROVE.pdb
