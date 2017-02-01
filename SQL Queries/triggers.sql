@@ -13,4 +13,4 @@ as
 	from inserted 
 	inner join dbo.aspnet_Users on dbo.aspnet_Users.UserId = inserted.UserId
 
-	insert into dbo.Usuario(id,usuario,email,senha, enderecoFoto) values (@id, @usuario, @email, @senha)
+	insert into dbo.Usuario(id,usuario,email,senha) values (@id, @usuario, @email, @senha)

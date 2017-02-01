@@ -1,4 +1,4 @@
------------------------------------------------------Nome banco de dados: 2016TiiGrupo3--------------------------------------------------------
+---------------------------------------Nome banco de dados: 2016TiiGrupo7--------------------------------------------------------
 create table Usuario(
 	id uniqueidentifier not null,
 	usuario nvarchar(256) not null,
@@ -92,6 +92,12 @@ create table Boletim(
 	foreign key(usuario_id) references Usuario(id)
 )
 
+create table Periodo(
+	id int identity(1,1) not null,
+	descricao varchar(100) not null,
+	primary key(id)
+)
+
 create table Disciplina(
 	id int identity(1,1) not null,
 	descricao varchar(100) not null,
@@ -101,12 +107,6 @@ create table Disciplina(
 	primary key(id),
 	foreign key(periodo_id) references Periodo(id),
 	foreign key(boletim_id) references Boletim(id)
-)
-	
-create table Periodo(
-	id int identity(1,1) not null,
-	descricao varchar(100) not null,
-	primary key(id)
 )
 
 create table Nota(

@@ -9,7 +9,7 @@ using System.Web;
 
 namespace IMPROVE.DAL
 {
-    public class DALNota
+    /*public class DALNota
     {
         private string connectionString = "";
 
@@ -19,7 +19,7 @@ namespace IMPROVE.DAL
                 ["2016TiiGrupo3ConnectionString"].ConnectionString;
         }
 
-        /*[DataObjectMethod(DataObjectMethodType.Select)]
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Modelo.Nota> SelectAll(Guid boletim_id)
         {
             Modelo.Nota aNota;
@@ -53,7 +53,7 @@ namespace IMPROVE.DAL
             conn.Close();
 
             return aListNotas;
-        }*/
+        }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public Modelo.Nota SelectById(int id)
@@ -127,5 +127,5 @@ namespace IMPROVE.DAL
 
             cmd.ExecuteNonQuery();
         }
-    }
+    }*/
 }
